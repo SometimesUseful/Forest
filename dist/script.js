@@ -10,7 +10,9 @@ for( var check of checkboxes ) {
                 move( animal, e);
             } );
         } else {
-            document.removeEventListener('keyup', move);
+            document.removeEventListener('keyup', function (e) {
+                move( animal, e);
+            } );
         }
     });
 }
@@ -61,7 +63,8 @@ Deer.prototype.constructor = Animal;
 
 
 function move(creature, e) {
-    alert(e);
+    console.log(creature);
+    alert(e.keyCode);
     switch (e.keyCode) {
 
         case 37: moveRight(creature);
@@ -79,6 +82,7 @@ function move(creature, e) {
 }
 
 function moveRight (animal) {
+    console.log(animal)
     if ( !animal.style.left ){
         animal.style.left = '10px';
     } else {
